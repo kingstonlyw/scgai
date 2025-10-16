@@ -1,1 +1,1 @@
-Please update your code here every week in your respective folders.
+Please upload whatever code you have now to main in your respective folders. Moving forward, make a branch for yourself (either by team if you are sharing code or individually otherwise, but please name it appropriately), and make pull requests to main every week with any new updates to your code. 
