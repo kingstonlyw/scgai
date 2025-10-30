@@ -1,9 +1,9 @@
 import osmnx as ox
 import json
 from geopy.distance import geodesic
-import matplotlib.pyplot as plt
+import folium
 
-# API call here to get chat to be able to convert a natural language input into location and radius of search.
+# Input
 location = "3413 Strand Ct, Ann Arbor, MI"
 radius_miles = 1
 miles_to_meters = 1609.34
@@ -14,16 +14,46 @@ lat, lon = ox.geocode(location)
 tag_map = {
     "park": {"leisure": "park"},
     "school": {"amenity": "school"},
-    "transit_station": {"public_transport": "station"},
     "university": {"amenity": "university"},
     "hospital": {"amenity": "hospital"},
+    "clinic": {"amenity": "clinic"},
+    "transit_station": {"public_transport": "station"},
+    "bus_stop": {"highway": "bus_stop"},
+    "supermarket": {"shop": "supermarket"},
+    "pharmacy": {"amenity": "pharmacy"},
+    "library": {"amenity": "library"},
+    "restaurant": {"amenity": "restaurant"},
+    "cafe": {"amenity": "cafe"},
+    "bank": {"amenity": "bank"},
+    "playground": {"leisure": "playground"},
+    "sports_centre": {"leisure": "sports_centre"},
+    "place_of_worship": {"amenity": "place_of_worship"},
+    "parking": {"amenity": "parking"},
+    "fuel": {"amenity": "fuel"},
+    "railway": {"railway": True},
+    "residential": {"landuse": "residential"},
     "industrial": {"landuse": "industrial"},
+    "construction": {"landuse": "construction"},
     "landfill": {"landuse": "landfill"},
-    "highway": {"highway": True}
+    "highway": {"highway": True},
+    "waste_disposal": {"amenity": "waste_disposal"},
+    "quarry": {"landuse": "quarry"},
+    "power_station": {"power": "plant"},
+    "noise_barrier": {"barrier": "noise_barrier"}
 }
 
-positive_categories = ["park", "school", "transit_station", "university", "hospital"]
-negative_categories = ["industrial", "landfill", "highway"]
+
+positive_categories = [
+    "park", "school", "university", "hospital", "clinic", "transit_station",
+    "bus_stop", "supermarket", "pharmacy", "library", "restaurant", "cafe",
+    "bank", "playground", "sports_centre", "place_of_worship"
+]
+
+negative_categories = [
+    "industrial", "construction", "landfill", "highway", "waste_disposal",
+    "quarry", "power_station", "noise_barrier"
+]
+
 
 positive_places = []
 negative_places = []
@@ -38,7 +68,6 @@ for category_list, label, storage in [
             if gdf.empty:
                 continue
 
-            # Drop rows with NaN geometries
             gdf = gdf.dropna(subset=["geometry"])
 
             for _, row in gdf.iterrows():
@@ -49,12 +78,12 @@ for category_list, label, storage in [
                 try:
                     centroid = geom.centroid
                     if centroid.is_empty or centroid.x != centroid.x or centroid.y != centroid.y:
-                        continue  # skip if NaN
+                        continue
                     coords = (centroid.y, centroid.x)
                 except Exception:
                     continue
 
-                if coords[0] != coords[0] or coords[1] != coords[1]:  # skip if NaN
+                if coords[0] != coords[0] or coords[1] != coords[1]:
                     continue
 
                 place_name = row.get("name", category)
@@ -69,7 +98,7 @@ for category_list, label, storage in [
                     "distance_miles": dist_miles,
                     "coordinates": [coords[0], coords[1]]
                 })
-        except Exception as e:
+        except Exception:
             print(f"Nothing for {category}")
 
 num_positive = 10
@@ -92,31 +121,69 @@ with open("poi_analysis.json", "w") as f:
 
 print(f"Found {len(positive_places)} positive and {len(negative_places)} negative places.")
 
-# -------- Plot 10 closest points overall --------
-top10_overall = sorted(_all_positive, key=lambda x: x["distance_miles"])[:10]
+m = folium.Map(location=[lat, lon], zoom_start=15, control_scale=True)
 
-if top10_overall:
-    poi_lats = [p["coordinates"][0] for p in top10_overall]
-    poi_lons = [p["coordinates"][1] for p in top10_overall]
-    poi_labels = [p["name"] if p["name"] else p["category"] for p in top10_overall]
-    poi_colors = ["tab:green" if p["type"] == "positive" else "tab:red" for p in top10_overall]
+folium.Circle(
+    location=[lat, lon],
+    radius=radius_meters,
+    fill=False,
+    color="#2563eb",
+    weight=2,
+    opacity=0.7,
+).add_to(m)
 
-    plt.figure(figsize=(7, 7))
-    plt.scatter([lon], [lat], s=100, marker="*", label="Center", zorder=3)
-    plt.scatter(poi_lons, poi_lats, s=50, c=poi_colors, zorder=2)
+folium.Marker(
+    [lat, lon],
+    icon=folium.Icon(color="blue", icon="star"),
+    tooltip="Center",
+    popup=f"{location}\nRadius: {radius_miles} miles",
+).add_to(m)
 
-    for x, y, lbl in zip(poi_lons, poi_lats, poi_labels):
-        plt.annotate(lbl, (x, y), xytext=(3, 3), textcoords="offset points", fontsize=8)
+def closest_by_category(pois):
+    best = {}
+    for p in pois:
+        c = p["category"]
+        if c not in best or p["distance_miles"] < best[c]["distance_miles"]:
+            best[c] = p
+    return best
 
-    plt.title(f"Top 10 Closest POIs within {radius_miles} mile(s)\n{location}")
-    plt.xlabel("Longitude")
-    plt.ylabel("Latitude")
-    plt.legend(loc="best")
-    plt.gca().set_aspect('equal', adjustable='box')
-    plt.grid(True, alpha=0.3)
-    plt.tight_layout()
-    plt.savefig("poi_plot.png", dpi=200)
-    plt.close()
-    print("Saved plot to poi_plot.png")
-else:
-    print("No POIs found to plot.")
+closest_positive = closest_by_category(_all_positive)
+closest_negative = closest_by_category(_all_negative)
+
+fg_pos = folium.FeatureGroup(name="Closest Positive (one per category)", show=True)
+fg_neg = folium.FeatureGroup(name="Closest Negative (one per category)", show=True)
+
+for cat, p in sorted(closest_positive.items()):
+    folium.CircleMarker(
+        location=p["coordinates"],
+        radius=8,
+        color="green",
+        fill=True,
+        fill_opacity=0.9,
+        popup=folium.Popup(
+            f"<b>{p['name']}</b><br>Category: {cat}<br>Distance: {p['distance_miles']} mi",
+            max_width=260,
+        ),
+        tooltip=f"{cat} • {p['name'] or cat}",
+    ).add_to(fg_pos)
+
+for cat, p in sorted(closest_negative.items()):
+    folium.CircleMarker(
+        location=p["coordinates"],
+        radius=8,
+        color="red",
+        fill=True,
+        fill_opacity=0.9,
+        popup=folium.Popup(
+            f"<b>{p['name']}</b><br>Category: {cat}<br>Distance: {p['distance_miles']} mi",
+            max_width=260,
+        ),
+        tooltip=f"{cat} • {p['name'] or cat}",
+    ).add_to(fg_neg)
+
+fg_pos.add_to(m)
+fg_neg.add_to(m)
+folium.LayerControl(position="topright").add_to(m)
+
+m.save("poi_map.html")
+print("Saved interactive map to poi_map.html")
