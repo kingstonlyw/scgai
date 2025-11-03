@@ -1,0 +1,16 @@
+{
+  "ID": "id",
+  "Start time": "start_time",
+  "Completion time": "completion_time",
+  "Email": "email",
+  "Name": "name",
+  "Last modified time": "last_modified_time",
+  "Is this submission from an individual or a team?": "submitter_type",
+  "If team, which team or department do you represent?": "team_or_department",
+  "What did you build or implement? (e.g. a ChatGPT prompt, a custom workflow, or a business-specific use case)": "what_built",
+  "What challenge did this address? (e.g. manual effort, communication bottlenecks, knowledge gaps)": "challenge_addressed",
+  "What was the outcome? Please describe the result and quantify the impact if possible (e.g., time saved, improved clarity, faster decision-making, or increased productivity).": "outcome",
+  "Could this be useful in other teams or departments? If so, please explain how it could be adapted or scaled.": "cross_team_use",
+  "Optional: What surprised you the most or worked better than expected?": "surprise",
+  "Optional: Upload a screenshot or paste a link to a demo": "demo_link_or_screenshot"
+}

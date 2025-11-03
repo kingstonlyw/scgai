@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Env and secrets
+.env
+
+# Outputs
+output/evaluations.json
+

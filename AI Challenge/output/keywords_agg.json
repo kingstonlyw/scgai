@@ -1,0 +1,377 @@
+[
+  {
+    "term": "efficiency",
+    "count": 4,
+    "weight_sum": 4.0
+  },
+  {
+    "term": "Custom GPT",
+    "count": 2,
+    "weight_sum": 2.0
+  },
+  {
+    "term": "email automation",
+    "count": 2,
+    "weight_sum": 2.0
+  },
+  {
+    "term": "standardization",
+    "count": 2,
+    "weight_sum": 2.0
+  },
+  {
+    "term": "workflow optimization",
+    "count": 2,
+    "weight_sum": 2.0
+  },
+  {
+    "term": "AI implementation",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "AI integration",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Anaplan documentation",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Automated rollups",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Capital Markets",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Chat GPT",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "ChatGPT",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "ChatGPT integration",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "DDQ GPT",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Debt Origination",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "EA assignments",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Excel VBA",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Excel tool",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Investor Relations",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Manual effort reduction",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "NDA processing",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Outlook",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Outlook integration",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Power Automate",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Productivity enhancement",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Python script",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "SFR deal annexes",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "SQL script",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "SREIT",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Talent Match",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "YTD reporting",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "Yardi export",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "accounting workflows",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "analysis",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "analyst efficiency",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "app development",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "associate productivity",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "automated tracking",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "automation script",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "candidate evaluation",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "clarity",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "consistency",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "cover emails",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "custom GPT",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "data extraction",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "deal fund splits",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "deal memos",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "deal summary",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "document management",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "enhancement",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "feedback analysis",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "formula generation",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "formula troubleshooting",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "function efficiency",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "hiring managers",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "intranet directory",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "job descriptions",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "ledger reporting",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "macros",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "manual effort",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "onboarding",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "organization",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "preparation time",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "productivity",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "project updates",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "queries",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "report generation",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "scorecards",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "searchable database",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "securitization",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "securitization emails",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "speed",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "team collaboration",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "time-saving",
+    "count": 1,
+    "weight_sum": 1.0
+  },
+  {
+    "term": "workflow automation",
+    "count": 1,
+    "weight_sum": 1.0
+  }
+]

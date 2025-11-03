@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Challenge Dashboard</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0 16px 40px; color: #222; }
+    header { padding: 16px 0; border-bottom: 1px solid #eee; margin-bottom: 16px; }
+    h1 { margin: 0; font-size: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .card { border: 1px solid #eee; border-radius: 8px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); background: #fff; }
+    .title { font-size: 14px; color: #555; margin: 0 0 8px; }
+    canvas { width: 100% !important; height: 320px !important; }
+    #wordcloud { width: 100%; height: 520px; border: 1px dashed #e5e5e5; border-radius: 8px; }
+    .stats { display: flex; gap: 16px; flex-wrap: wrap; }
+    .stat { padding: 10px 12px; border: 1px solid #eee; border-radius: 8px; min-width: 140px; background: #fafafa; }
+    .stat .k { font-size: 12px; color: #666; }
+    .stat .v { font-size: 20px; font-weight: 600; }
+    footer { margin-top: 28px; font-size: 12px; color: #777; }
+    .note { font-size: 12px; color: #777; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.js"></script>
+</head>
+<body>
+  <header>
+    <h1>AI Challenge Dashboard</h1>
+    <div class="note"></div>
+  </header>
+
+  <section class="stats" id="top-stats"></section>
+
+  <section class="grid" style="margin-top:16px;">
+    <div class="card">
+      <div class="title">Submissions by Month</div>
+      <canvas id="byMonth"></canvas>
+    </div>
+    <div class="card">
+      <div class="title">Submissions by Type</div>
+      <canvas id="byType"></canvas>
+    </div>
+    <div class="card">
+      <div class="title">Top Teams by Count</div>
+      <canvas id="byTeam"></canvas>
+    </div>
+
+    <div class="card">
+      <div class="title">Keyword Word Cloud</div>
+      <div id="wordcloud"></div>
+      <div class="note"></div>
+    </div>
+  </section>
+
+  <footer>
+
+  </footer>
+
+  <script>
+  async function loadJSON(path) {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+    return res.json();
+  }
+
+  function groupByMonth(byDay) {
+    const map = new Map();
+    for (const {date, count} of byDay) {
+      if (!date) continue;
+      const ym = date.slice(0,7);
+      map.set(ym, (map.get(ym) || 0) + count);
+    }
+    return Array.from(map.entries()).sort((a,b)=>a[0]<b[0]?-1:1);
+  }
+
+  function topNTeams(byTeamArr, n=10) {
+    return byTeamArr.slice(0, n);
+  }
+
+  function toRGB(idx) {
+    const palette = ["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"];
+    return palette[idx % palette.length];
+  }
+
+  function renderStats(meta) {
+    const el = document.getElementById('top-stats');
+    const c = meta.counts || {};
+    const avg = meta.averages || {};
+    const cards = [
+      {k: 'Responses Evaluated', v: c.responses_evaluated ?? '-'},
+      {k: 'Submissions (total)', v: c.submissions_total ?? '-'},
+      {k: 'Overall Mean', v: (avg.overall_mean ?? 0).toFixed(2)}
+    ];
+    el.innerHTML = cards.map(x => `<div class="stat"><div class="k">${x.k}</div><div class="v">${x.v}</div></div>`).join('');
+  }
+
+  function renderByMonth(ctx, meta) {
+    const byDay = (meta.distributions && meta.distributions.by_day) || [];
+    const monthPairs = groupByMonth(byDay);
+    const labels = monthPairs.map(x=>x[0]);
+    const values = monthPairs.map(x=>x[1]);
+    new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ label: 'Submissions', data: values, backgroundColor: '#1f77b4' }]}, options: { scales: { y: { beginAtZero: true }}}});
+  }
+
+  function renderByType(ctx, meta) {
+    const byType = (meta.distributions && meta.distributions.by_submitter_type) || {};
+    const labels = Object.keys(byType);
+    const values = labels.map(k=>byType[k]);
+    const colors = labels.map((_,i)=>toRGB(i));
+    new Chart(ctx, { type: 'pie', data: { labels, datasets: [{ data: values, backgroundColor: colors }]}});
+  }
+
+  function renderByTeam(ctx, meta) {
+    const top = topNTeams(((meta.distributions && meta.distributions.by_team) || []), 10);
+    const labels = top.map(x=>x.team);
+    const values = top.map(x=>x.count);
+    new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ label: 'Submissions', data: values, backgroundColor: '#2ca02c' }]}, options: { indexAxis:'y', scales: { x: { beginAtZero: true }}}});
+  }
+
+  function tokenize(text) {
+    return (text||'')
+      .toLowerCase()
+      .replace(/https?:\/\/\S+/g,' ')
+      .replace(/[^a-z0-9\s]/g,' ')
+      .split(/\s+/)
+      .filter(w=>w.length>2);
+  }
+  const STOP = new Set('the a an and or for from with this that into onto about above below over under across within between without into of to in on at by be been being is are was were do does did doing can could should would may might must will shall as per via not only than then so such very just each more most much many few lot lots next past prior after before while since until among whose whom who what when where why how your you we they he she it its our their us them him her me my mine yours theirs ours'.split(/\s+/));
+
+  async function loadKeywordsAgg(base) {
+    const path = base + '/output/keywords_agg.json';
+    const res = await fetch(path);
+    if (!res.ok) throw new Error('keywords_agg.json not found');
+    const arr = await res.json();
+    return arr.map(x => [x.term, x.weight_sum || x.count || 1]);
+  }
+
+  function renderWordCloud(el, freqPairs) {
+    if (!window.WordCloud) {
+      el.innerHTML = 'wordcloud2.js failed to load';
+      return;
+    }
+    const full = freqPairs.map(([w,c])=>[w, c]);
+    const list = full.slice(0, 70);
+    const weights = list.map(([,w]) => w);
+    const max = Math.max(...weights) || 1;
+    const min = Math.min(...weights) || 0;
+    const sqrtMax = Math.sqrt(max);
+    const sqrtMin = Math.sqrt(min);
+    function scale(w) {
+      const t = (Math.sqrt(w) - sqrtMin) / ((sqrtMax - sqrtMin) || 1);
+      return 14 + t * (64 - 14);
+    }
+    WordCloud(el, {
+      list,
+      gridSize: 8,
+      weightFactor: (w) => scale(w),
+      fontFamily: 'Impact, Arial Black, Arial',
+      color: () => { const h = Math.floor(Math.random()*360); return `hsl(${h},70%,45%)`; },
+      rotateRatio: 0,
+      rotationSteps: 2,
+      backgroundColor: '#fff'
+    });
+  }
+
+  async function init() {
+    try {
+      const base = '..';
+      const [meta, submissions, evaluations] = await Promise.all([
+        loadJSON(base + '/output/meta.json'),
+        loadJSON(base + '/output/submissions.json'),
+        loadJSON(base + '/output/evaluations.json')
+      ]);
+
+      renderStats(meta);
+      renderByMonth(document.getElementById('byMonth'), meta);
+      renderByType(document.getElementById('byType'), meta);
+      renderByTeam(document.getElementById('byTeam'), meta);
+      try {
+        const freq = await loadKeywordsAgg(base);
+        renderWordCloud(document.getElementById('wordcloud'), freq);
+      } catch (e) {
+        const el = document.getElementById('wordcloud');
+        el.innerHTML = '<div style="padding:12px;color:#666;">AI keywords not found. Run: <code>python "scgai/AI Challenge/extract_keywords.py"</code> or use <code>run_all.py --with-keywords</code>.</div>';
+      }
+    } catch (e) {
+      console.error(e);
+      alert('Failed to load JSON files. Serve via a local server and ensure outputs exist.');
+    }
+  }
+  init();
+  </script>
+</body>
+</html>
