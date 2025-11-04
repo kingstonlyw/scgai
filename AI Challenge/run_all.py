@@ -28,6 +28,10 @@ def main() -> None:
     ap.add_argument("--header-row", type=int, default=1, help="Header row (1-based)")
     ap.add_argument("--skip-llm", action="store_true", help="Skip the LLM evaluation step")
     ap.add_argument("--export-pdf", action="store_true", help="Export evaluations to a PDF report at the end")
+    # Front-facing options
+    ap.add_argument("--front-plus", action="store_true", help="Use enhanced front-facing builder with LLM options")
+    ap.add_argument("--front-llm-title", action="store_true", help="Generate LLM titles in front-facing output (with --front-plus)")
+    ap.add_argument("--front-llm-clean", action="store_true", help="Include LLM-cleaned fields in front-facing output (with --front-plus)")
     ap.add_argument("--with-keywords", action="store_true", help="Extract AI keywords for front-facing word cloud")
     # Optional fetch step (Microsoft Graph)
     ap.add_argument("--fetch-share-link", help="Fetch Excel from a Graph share link before processing")
@@ -57,6 +61,10 @@ def main() -> None:
     front_builder = find_first([
         base / "build_front_facing.py",
         base.parent / "build_front_facing.py",
+    ])
+    front_builder_plus = find_first([
+        base / "build_front_facing_plus.py",
+        base.parent / "build_front_facing_plus.py",
     ])
     fetcher = find_first([
         base / "fetch_form_excel.py",
@@ -176,14 +184,28 @@ def main() -> None:
 
     # Step 4: Build front-facing list
     print("[4/4] Building front-facing list …")
-    subprocess.run([
-        sys.executable,
-        front_builder,
-        "--input",
-        str(evaluations_path),
-        "--output",
-        str(out_dir / "front_facing.json"),
-    ], check=True)
+    front_out = str(out_dir / "front_facing.json")
+    if args.front_plus and front_builder_plus:
+        cmd_front = [
+            sys.executable,
+            front_builder_plus,
+            "--input", str(evaluations_path),
+            "--output", front_out,
+        ]
+        if args.front_llm_title:
+            cmd_front.append("--llm-title")
+        if args.front_llm_clean:
+            cmd_front += ["--llm-clean", "--submissions", str(submissions_path)]
+        subprocess.run(cmd_front, check=True)
+    else:
+        subprocess.run([
+            sys.executable,
+            front_builder,
+            "--input",
+            str(evaluations_path),
+            "--output",
+            front_out,
+        ], check=True)
 
     # Optional: AI keyword extraction
     if args.with_keywords:

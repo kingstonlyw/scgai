@@ -1,27 +1,27 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2025-10-27T19:04:59Z",
+  "generated_at": "2025-11-04T17:11:35Z",
   "counts": {
     "responses_evaluated": 15,
     "submissions_total": 15
   },
   "averages": {
-    "specificity": 4.267,
-    "strategic_alignment": 4.067,
-    "value_roi": 4.267,
-    "feasibility": 4.467,
-    "non_technical_usability": 4.6,
-    "novelty_creativity": 3.133,
-    "technical_complexity_vs_value": 3.867,
-    "overall_verdict": 3.933,
+    "specificity": 4.4,
+    "strategic_alignment": 4.133,
+    "value_roi": 4.2,
+    "feasibility": 4.267,
+    "non_technical_usability": 4.4,
+    "novelty_creativity": 3.333,
+    "technical_complexity_vs_value": 3.933,
+    "overall_verdict": 4.067,
     "overall_mean": 4.095
   },
   "distributions": {
     "overall_verdict_histogram": {
       "1": 1,
-      "2": 1,
+      "2": 0,
       "3": 1,
-      "4": 7,
+      "4": 8,
       "5": 5
     },
     "by_submitter_type": {

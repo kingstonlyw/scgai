@@ -19,6 +19,18 @@
     .stat .v { font-size: 20px; font-weight: 600; }
     footer { margin-top: 28px; font-size: 12px; color: #777; }
     .note { font-size: 12px; color: #777; }
+
+    /* Modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+    .modal { background: #fff; width: min(820px, 94vw); max-height: 90vh; overflow: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .modal header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eee; }
+    .modal header h3 { margin: 0; font-size: 16px; }
+    .modal .close { border: 0; background: transparent; font-size: 20px; cursor: pointer; color: #666; }
+    .modal .content { padding: 14px 16px; }
+    .field { margin: 8px 0 12px; }
+    .field .label { font-weight: 600; color: #333; margin-bottom: 4px; }
+    .front-item { cursor: pointer; }
+    .front-item:hover { background: #fafafa; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.js"></script>
@@ -33,6 +45,10 @@
 
   <section class="grid" style="margin-top:16px;">
     <div class="card">
+      <div class="title">Submissions</div>
+      <div id="frontList" style="max-height: 520px; overflow-y: auto; border: 1px solid #eee; border-radius: 6px; padding: 8px;"></div>
+    </div>
+    <div class="card">
       <div class="title">Submissions by Month</div>
       <canvas id="byMonth"></canvas>
     </div>
@@ -41,7 +57,7 @@
       <canvas id="byType"></canvas>
     </div>
     <div class="card">
-      <div class="title">Top Teams by Count</div>
+      <div class="title">Submissions by Department</div>
       <canvas id="byTeam"></canvas>
     </div>
 
@@ -55,6 +71,17 @@
   <footer>
 
   </footer>
+
+  <!-- Modal for cleaned details -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header>
+        <h3 id="modalTitle">Submission</h3>
+        <button class="close" id="modalClose" title="Close" aria-label="Close">×</button>
+      </header>
+      <div class="content" id="modalContent"></div>
+    </div>
+  </div>
 
   <script>
   async function loadJSON(path) {
@@ -82,14 +109,27 @@
     return palette[idx % palette.length];
   }
 
+  function renderFrontList(el, items) {
+    if (!Array.isArray(items)) { el.innerHTML = '<div class="note">front_facing.json not found or invalid.</div>'; return; }
+    const rows = items.map((it) => {
+      const name = (it.name || '').toString();
+      const title = (it.title || it.rephrased_submission || '').toString();
+      const safeTitle = title.length > 140 ? title.slice(0, 137) + '…' : title;
+      return `<div style="padding:8px 6px;border-bottom:1px solid #f0f0f0;">
+                <div style="font-weight:600;">${name || '&nbsp;'}</div>
+                <div style="color:#444;">${safeTitle || '&nbsp;'}</div>
+              </div>`;
+    }).join('');
+    el.innerHTML = rows || '<div class="note">No items to display.</div>';
+  }
+
   function renderStats(meta) {
     const el = document.getElementById('top-stats');
     const c = meta.counts || {};
     const avg = meta.averages || {};
     const cards = [
       {k: 'Responses Evaluated', v: c.responses_evaluated ?? '-'},
-      {k: 'Submissions (total)', v: c.submissions_total ?? '-'},
-      {k: 'Overall Mean', v: (avg.overall_mean ?? 0).toFixed(2)}
+      {k: 'Submissions (total)', v: c.submissions_total ?? '-'}
     ];
     el.innerHTML = cards.map(x => `<div class="stat"><div class="k">${x.k}</div><div class="v">${x.v}</div></div>`).join('');
   }
@@ -166,10 +206,11 @@
   async function init() {
     try {
       const base = '..';
-      const [meta, submissions, evaluations] = await Promise.all([
+      const [meta, submissions, evaluations, frontFacing] = await Promise.all([
         loadJSON(base + '/output/meta.json'),
         loadJSON(base + '/output/submissions.json'),
-        loadJSON(base + '/output/evaluations.json')
+        loadJSON(base + '/output/evaluations.json'),
+        loadJSON(base + '/output/front_facing.json')
       ]);
 
       renderStats(meta);
@@ -183,12 +224,54 @@
         const el = document.getElementById('wordcloud');
         el.innerHTML = '<div style="padding:12px;color:#666;">AI keywords not found. Run: <code>python "scgai/AI Challenge/extract_keywords.py"</code> or use <code>run_all.py --with-keywords</code>.</div>';
       }
+
+      // Render front-facing names and titles
+      try {
+        window.__frontFacing = frontFacing || [];
+        const listEl = document.getElementById('frontList');
+        renderFrontList(listEl, window.__frontFacing)
+        Array.from(listEl.children).forEach((node, idx) => {
+          node.classList.add('front-item');
+          node.addEventListener('click', () => { try { openModal(window.__frontFacing[idx]); } catch (e) {} });
+        });
+      } catch (e) {
+        document.getElementById('frontList').innerHTML = '<div class="note">Failed to load front_facing.json</div>';
+      }
     } catch (e) {
       console.error(e);
       alert('Failed to load JSON files. Serve via a local server and ensure outputs exist.');
     }
   }
   init();
+  // Modal helpers
+  function esc(s) { return (s==null? '': String(s)).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); }
+  function openModal(item) {
+    const overlay = document.getElementById('modalOverlay');
+    const titleEl = document.getElementById('modalTitle');
+    const content = document.getElementById('modalContent');
+    const name = item?.name || '';
+    const title = item?.title || item?.rephrased_submission || '';
+    const c = item?.cleaned || {};
+    titleEl.textContent = name;
+    const blocks = [
+      ['Title', title],
+      ['What was built', c.what_built],
+      ['Challenge addressed', c.challenge_addressed],
+      ['Outcome', c.outcome],
+      ['Cross-team use', c.cross_team_use],
+      ['Surprise', c.surprise],
+      ['Link', c.optional],
+    ];
+    const html = blocks.map(([label, value]) => {
+      const v = (value && String(value).trim()) ? esc(value) : '<span class="note">(not provided)</span>';
+      return `<div class=\"field\"><div class=\"label\">${esc(label)}</div><div>${v}</div></div>`;
+    }).join('');
+    content.innerHTML = html;
+    overlay.style.display = 'flex';
+  }
+  function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', (e) => { if (e.target.id === 'modalOverlay') closeModal(); });
   </script>
 </body>
 </html>
