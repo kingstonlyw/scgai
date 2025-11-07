@@ -1,5 +1,3 @@
-This is the folder for those working with the Acquisitions team.
-
 Using demo.ipynb:
 - Download pdf files you want analyzed locally and move them to the same file as demo.ipynb
 - Edit user_input variable in the first code block
