@@ -1,1 +1,1 @@
-Please upload whatever code you have now to main in your respective folders. Moving forward, make a branch for yourself (either by team if you are sharing code or individually otherwise, but please name it appropriately), and make pull requests to main every week with any new updates to your code. 
+This is the repository for the MIT-Starwood case. The Acquisitions folder contains the geospatial and economic data analysis scripts. The AI Challenge folder contains the data extraction pipeline for the AI Challenge.
