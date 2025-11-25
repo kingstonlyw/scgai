@@ -1,0 +1,420 @@
+[
+  {
+    "id": "1.0",
+    "name": "Brian Nordlinger",
+    "keywords": [
+      {
+        "term": "Custom GPT",
+        "weight": 1.0
+      },
+      {
+        "term": "Anaplan documentation",
+        "weight": 1.0
+      },
+      {
+        "term": "formula troubleshooting",
+        "weight": 1.0
+      },
+      {
+        "term": "formula generation",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "2.0",
+    "name": "Natasha Barker",
+    "keywords": [
+      {
+        "term": "AI implementation",
+        "weight": 1.0
+      },
+      {
+        "term": "EA assignments",
+        "weight": 1.0
+      },
+      {
+        "term": "intranet directory",
+        "weight": 1.0
+      },
+      {
+        "term": "searchable database",
+        "weight": 1.0
+      },
+      {
+        "term": "deal fund splits",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "3.0",
+    "name": "William Kanders",
+    "keywords": [
+      {
+        "term": "automated tracking",
+        "weight": 1.0
+      },
+      {
+        "term": "email automation",
+        "weight": 1.0
+      },
+      {
+        "term": "project updates",
+        "weight": 1.0
+      },
+      {
+        "term": "Power Automate",
+        "weight": 1.0
+      },
+      {
+        "term": "Chat GPT",
+        "weight": 1.0
+      },
+      {
+        "term": "team collaboration",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "4.0",
+    "name": "Daniel Kates",
+    "keywords": [
+      {
+        "term": "automation script",
+        "weight": 1.0
+      },
+      {
+        "term": "securitization emails",
+        "weight": 1.0
+      },
+      {
+        "term": "Outlook",
+        "weight": 1.0
+      },
+      {
+        "term": "organization",
+        "weight": 1.0
+      },
+      {
+        "term": "efficiency",
+        "weight": 1.0
+      },
+      {
+        "term": "Capital Markets",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "5.0",
+    "name": "Michael Warrenger",
+    "keywords": [
+      {
+        "term": "Custom GPT",
+        "weight": 1.0
+      },
+      {
+        "term": "deal summary",
+        "weight": 1.0
+      },
+      {
+        "term": "Debt Origination",
+        "weight": 1.0
+      },
+      {
+        "term": "speed",
+        "weight": 1.0
+      },
+      {
+        "term": "consistency",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "6.0",
+    "name": "Marvin Saint-Fleur",
+    "keywords": [
+      {
+        "term": "time-saving",
+        "weight": 1.0
+      },
+      {
+        "term": "workflow optimization",
+        "weight": 1.0
+      },
+      {
+        "term": "associate productivity",
+        "weight": 1.0
+      },
+      {
+        "term": "function efficiency",
+        "weight": 1.0
+      },
+      {
+        "term": "app development",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "7.0",
+    "name": "Kieran Hagan",
+    "keywords": [
+      {
+        "term": "DDQ GPT",
+        "weight": 1.0
+      },
+      {
+        "term": "onboarding",
+        "weight": 1.0
+      },
+      {
+        "term": "SREIT",
+        "weight": 1.0
+      },
+      {
+        "term": "Investor Relations",
+        "weight": 1.0
+      },
+      {
+        "term": "enhancement",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "8.0",
+    "name": "Sarah Connolly",
+    "keywords": [
+      {
+        "term": "Talent Match",
+        "weight": 1.0
+      },
+      {
+        "term": "candidate evaluation",
+        "weight": 1.0
+      },
+      {
+        "term": "job descriptions",
+        "weight": 1.0
+      },
+      {
+        "term": "feedback analysis",
+        "weight": 1.0
+      },
+      {
+        "term": "scorecards",
+        "weight": 1.0
+      },
+      {
+        "term": "hiring managers",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "9.0",
+    "name": "Cameron Pearson",
+    "keywords": [
+      {
+        "term": "Automated rollups",
+        "weight": 1.0
+      },
+      {
+        "term": "Excel VBA",
+        "weight": 1.0
+      },
+      {
+        "term": "ChatGPT integration",
+        "weight": 1.0
+      },
+      {
+        "term": "Manual effort reduction",
+        "weight": 1.0
+      },
+      {
+        "term": "Productivity enhancement",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "10.0",
+    "name": "Peter Hamernick",
+    "keywords": [
+      {
+        "term": "Yardi export",
+        "weight": 1.0
+      },
+      {
+        "term": "AI integration",
+        "weight": 1.0
+      },
+      {
+        "term": "SQL script",
+        "weight": 1.0
+      },
+      {
+        "term": "accounting workflows",
+        "weight": 1.0
+      },
+      {
+        "term": "report generation",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "11.0",
+    "name": "Alexandra Roberts",
+    "keywords": [
+      {
+        "term": "NDA processing",
+        "weight": 1.0
+      },
+      {
+        "term": "efficiency",
+        "weight": 1.0
+      },
+      {
+        "term": "productivity",
+        "weight": 1.0
+      },
+      {
+        "term": "workflow automation",
+        "weight": 1.0
+      },
+      {
+        "term": "document management",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "13.0",
+    "name": "Daniel Kates",
+    "keywords": [
+      {
+        "term": "Python script",
+        "weight": 1.0
+      },
+      {
+        "term": "securitization",
+        "weight": 1.0
+      },
+      {
+        "term": "email automation",
+        "weight": 1.0
+      },
+      {
+        "term": "Outlook integration",
+        "weight": 1.0
+      },
+      {
+        "term": "analyst efficiency",
+        "weight": 1.0
+      },
+      {
+        "term": "workflow optimization",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "14.0",
+    "name": "Christopher Rockensies",
+    "keywords": [
+      {
+        "term": "Excel tool",
+        "weight": 1.0
+      },
+      {
+        "term": "queries",
+        "weight": 1.0
+      },
+      {
+        "term": "macros",
+        "weight": 1.0
+      },
+      {
+        "term": "YTD reporting",
+        "weight": 1.0
+      },
+      {
+        "term": "ledger reporting",
+        "weight": 1.0
+      },
+      {
+        "term": "manual effort",
+        "weight": 1.0
+      },
+      {
+        "term": "efficiency",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "15.0",
+    "name": "Daniel Kates",
+    "keywords": [
+      {
+        "term": "ChatGPT",
+        "weight": 1.0
+      },
+      {
+        "term": "SFR deal annexes",
+        "weight": 1.0
+      },
+      {
+        "term": "standardization",
+        "weight": 1.0
+      },
+      {
+        "term": "efficiency",
+        "weight": 1.0
+      },
+      {
+        "term": "data extraction",
+        "weight": 1.0
+      },
+      {
+        "term": "analysis",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "16.0",
+    "name": "Rhonda Chan",
+    "keywords": [
+      {
+        "term": "custom GPT",
+        "weight": 1.0
+      },
+      {
+        "term": "cover emails",
+        "weight": 1.0
+      },
+      {
+        "term": "deal memos",
+        "weight": 1.0
+      },
+      {
+        "term": "standardization",
+        "weight": 1.0
+      },
+      {
+        "term": "clarity",
+        "weight": 1.0
+      },
+      {
+        "term": "preparation time",
+        "weight": 1.0
+      }
+    ]
+  }
+]
