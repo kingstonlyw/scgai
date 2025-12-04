@@ -1,4 +1,4 @@
-AI Challenge Pipeline
+AI Challenge Pipeline (please see AI Challenge Midpoint Presentation.pdf for simplified workflow diagram)
 
 Purpose
 - Convert Microsoft Forms exports (Excel) into structured JSON for intranet pages.
