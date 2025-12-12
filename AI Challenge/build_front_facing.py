@@ -4,14 +4,12 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-# Optional .env loader (for OPENAI_API_KEY when --llm-title is used)
 try:
     from dotenv import load_dotenv  # type: ignore
     load_dotenv()
 except Exception:
     pass
 
-# sometimes LLM doesn't follow instructions and puts score as words instead of numbers
 def _coerce_score(v: Any) -> int:
     """Coerce score to 1..5. Accept ints/strings and common words as fallback."""
     try:
@@ -50,7 +48,7 @@ def _llm_title(client, model: str, name: str, rephr: str) -> str:
         f"Name: {name}\n"
         f"Rephrased submission: {rephr}"
     )
-    # Prefer Responses API
+
     try:
         resp = client.responses.create(
             model=model,
@@ -64,7 +62,7 @@ def _llm_title(client, model: str, name: str, rephr: str) -> str:
         return title.splitlines()[0][:120]
     except Exception:
         pass
-    # Fallback: Chat Completions
+
     try:
         chat = client.chat.completions.create(
             model=model,
@@ -79,6 +77,16 @@ def _llm_title(client, model: str, name: str, rephr: str) -> str:
     except Exception:
         frag = rephr.split(".")[0].strip()
         return (frag or "Untitled")[0:120]
+
+
+def _norm_id(v: Any) -> str:
+    try:
+        f = float(v)
+        if f.is_integer():
+            return str(int(f))
+        return str(v)
+    except Exception:
+        return str(v)
 
 
 def main() -> None:
@@ -110,6 +118,11 @@ def main() -> None:
         default=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
         help="Model to use when --llm-title is set",
     )
+    ap.add_argument(
+        "--submissions",
+        default="scgai/AI Challenge/output/submissions.json",
+        help="Path to submissions.json (for metadata enrichment)",
+    )
     args = ap.parse_args()
 
     in_path = Path(args.input)
@@ -120,7 +133,14 @@ def main() -> None:
 
     data: List[Dict[str, Any]] = json.load(open(in_path, encoding="utf-8"))
 
-    # Optional LLM client
+    subs_by_id: Dict[str, Dict[str, Any]] = {}
+    subs_path = Path(args.submissions)
+    if subs_path.exists():
+        subs: List[Dict[str, Any]] = json.load(open(subs_path, encoding="utf-8"))
+        for rec in subs:
+            sid = _norm_id(rec.get("id"))
+            subs_by_id[sid] = rec
+
     client = None
     if args.llm_title:
         try:
@@ -142,16 +162,28 @@ def main() -> None:
         overall = _coerce_score((ev.get("scores") or {}).get("overall_verdict"))
         if not name and not rephr:
             continue
+        sid = _norm_id(meta.get("submission_id") or ev.get("_id"))
+        src = subs_by_id.get(sid, {})
+
         if args.llm_title:
             title = _llm_title(client, args.model, name, rephr)
             item: Dict[str, Any] = {"name": name, "title": title}
         else:
             item = {"name": name, "rephrased_submission": rephr}
+        item.update(
+            {
+                "submission_id": sid,
+                "completion_time": meta.get("timestamp_utc"),
+                "email": meta.get("email") or src.get("email"),
+                "submitter_type": meta.get("submitter_type") or src.get("submitter_type"),
+                "team_or_department": meta.get("team_or_department") or src.get("team_or_department"),
+            }
+        )
         if args.include_score:
             item["overall_score"] = overall
         ranked.append((overall, name.lower(), item))
 
-    # Sort by score desc, then name
+
     ranked.sort(key=lambda x: (-x[0], x[1]))
     output_items = [t[2] for t in ranked]
 

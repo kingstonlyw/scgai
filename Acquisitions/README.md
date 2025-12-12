@@ -11,5 +11,6 @@ Using starwood_project_map.py
 
 To run use
 
-pip install osmnx geopy folium
-python starwood_project_map.py
+pip install osmnx geopy folium streamlit
+streamlit run starwood_project_map.py in your terminal. 
+

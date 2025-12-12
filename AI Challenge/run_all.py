@@ -191,11 +191,12 @@ def main() -> None:
             front_builder_plus,
             "--input", str(evaluations_path),
             "--output", front_out,
+            "--submissions", str(submissions_path),
         ]
         if args.front_llm_title:
             cmd_front.append("--llm-title")
         if args.front_llm_clean:
-            cmd_front += ["--llm-clean", "--submissions", str(submissions_path)]
+            cmd_front.append("--llm-clean")
         subprocess.run(cmd_front, check=True)
     else:
         subprocess.run([
@@ -205,6 +206,8 @@ def main() -> None:
             str(evaluations_path),
             "--output",
             front_out,
+            "--submissions",
+            str(submissions_path),
         ], check=True)
 
     # Optional: AI keyword extraction

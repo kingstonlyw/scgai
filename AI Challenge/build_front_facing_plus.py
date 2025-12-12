@@ -192,13 +192,13 @@ def main() -> None:
             raise SystemExit(f"Failed to init OpenAI client: {e}")
 
     subs_by_id: Dict[str, Dict[str, Any]] = {}
-    if args.llm_clean:
-        spath = Path(args.submissions)
-        if not spath.exists():
-            raise SystemExit(f"--llm-clean requires submissions file: {spath}")
+    spath = Path(args.submissions)
+    if spath.exists():
         subs: List[Dict[str, Any]] = json.load(open(spath, encoding="utf-8"))
         for s in subs:
             subs_by_id[_norm_id(s.get("id"))] = s
+    elif args.llm_clean:
+        raise SystemExit(f"--llm-clean requires submissions file: {spath}")
 
     ranked: List[Tuple[int, str, Dict[str, Any]]] = []
     for ev in evals:
@@ -212,16 +212,26 @@ def main() -> None:
             continue
 
 
+        sid = _norm_id((ev.get("_id") or meta.get("submission_id")))
+        src = subs_by_id.get(sid)
+
         if args.llm_title and client is not None:
             title = _llm_title(client, args.model, name, rephr)
             item: Dict[str, Any] = {"name": name, "title": title}
         else:
             item = {"name": name, "rephrased_submission": rephr}
+        item.update(
+            {
+                "submission_id": sid,
+                "completion_time": meta.get("timestamp_utc"),
+                "email": meta.get("email") or (src or {}).get("email"),
+                "submitter_type": meta.get("submitter_type") or (src or {}).get("submitter_type"),
+                "team_or_department": meta.get("team_or_department") or (src or {}).get("team_or_department"),
+            }
+        )
 
 
         if args.llm_clean and client is not None:
-            sid = _norm_id((ev.get("_id") or meta.get("submission_id")))
-            src = subs_by_id.get(sid)
             if src:
                 fields = {
                     "what_built": (src.get("what_built") or "").strip(),
