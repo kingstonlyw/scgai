@@ -1,0 +1,89 @@
+{
+  "title": "AI Prompt Library",
+  "owner": "Real Estate / Private Equity Operations",
+  "version": "1.0",
+  "prompts": [
+    {
+      "id": "inbox-triage-routing",
+      "name": "Inbox Triage, Routing, and Next Actions",
+      "overview": "Turn a raw email or thread into a clear category, urgency, owner, action checklist, and (optionally) a draft reply.",
+      "use_cases": [
+        "High-volume inboxes and shared mailboxes",
+        "Recurring notifications and duplicates",
+        "Routing to the right team with minimal back-and-forth"
+      ],
+      "inputs_to_plug_in": [
+        "Email subject, sender, timestamp",
+        "Email body and thread context",
+        "Routing rules (keywords \u2192 team/owner)",
+        "Your role and whether you want a reply drafted"
+      ],
+      "prompt_template": "You are my Inbox Triage Assistant.\nGiven the email/thread content and my routing rules, produce a structured triage result: classification, urgency, recommended owner/team, dedupe signals, required actions with deadlines, and (if requested) a short draft reply in my tone.\nUse only the provided rules and context. If something is missing, list the exact missing fields."
+    },
+    {
+      "id": "deal-terms-standardize",
+      "name": "Deal Terms \u2192 Standardized Bullets",
+      "overview": "Convert unstructured deal content (RFP/OM/email/model notes) into consistent bullets, a terms table, and follow-up questions.",
+      "use_cases": [
+        "Quick deal summaries for internal circulation",
+        "Normalizing inputs from different counterparties",
+        "Flagging conflicting term values across sources"
+      ],
+      "inputs_to_plug_in": [
+        "Raw text pasted from RFP/OM/email/model notes",
+        "Your required fields and preferred bullet style",
+        "Any special definitions (e.g., what counts as 'key dates')"
+      ],
+      "prompt_template": "Extract and standardize the key deal terms from the provided content.\nOutput must be structured: (1) executive bullets (max X), (2) terms table, (3) risks/unknowns, (4) follow-up questions.\nIf the content conflicts, flag conflicts and list both values."
+    },
+    {
+      "id": "internal-notes-to-external-email",
+      "name": "Internal Notes \u2192 External Email Draft",
+      "overview": "Turn internal bullets into a polished external email that follows your house style and constraints.",
+      "use_cases": [
+        "Counterparty clarifications and requests",
+        "Investor updates and follow-ups",
+        "Vendor communication and scheduling"
+      ],
+      "inputs_to_plug_in": [
+        "Internal memo/bullets and the core ask",
+        "Recipient context (who they are, what they expect)",
+        "Must-include items and prohibited language",
+        "Signature block and desired tone"
+      ],
+      "prompt_template": "Draft an external email using our house style.\nInputs: internal memo, the ask, the recipient context, and any \u201cmust include / must avoid\u201d rules.\nOutput: subject options + email draft + a short checklist confirming constraints were followed."
+    },
+    {
+      "id": "monthly-close-reporting-helper",
+      "name": "Monthly Close / Reporting Pack Helper",
+      "overview": "Given export fields and mapping rules, propose a repeatable transformation plan and draft variance commentary prompts.",
+      "use_cases": [
+        "Month-end close and recurring reporting packages",
+        "Mapping accounts into consistent reporting lines",
+        "Drafting variance commentary and questions"
+      ],
+      "inputs_to_plug_in": [
+        "Export column headers + sample rows (or summary)",
+        "Mapping rules (account \u2192 segment/category)",
+        "Reporting target view (by property/fund/segment)"
+      ],
+      "prompt_template": "You are my Monthly Close Reporting Assistant.\nUsing the provided export fields and reporting mapping rules, propose a repeatable process to transform the export into a reporting view (by segment/property/fund/etc.).\nOutput a step-by-step recipe, a table spec, and draft variance commentary prompts."
+    },
+    {
+      "id": "project-tracker-digest",
+      "name": "Project Tracker \u2192 Digest Email",
+      "overview": "Turn a list of projects into a clean weekly/daily digest (plain text + optional HTML) with overdue and due-soon flags.",
+      "use_cases": [
+        "Weekly team status updates",
+        "Leadership-ready summaries",
+        "Reducing time spent reformatting trackers"
+      ],
+      "inputs_to_plug_in": [
+        "Project list (name, owner, status, due date, notes)",
+        "Highlight rules (due today, overdue, at risk)",
+        "Audience and tone"
+      ],
+      "prompt_template": "Create a project digest email from the provided project list.\nInclude a table with status, owner, due date, and notes.\nHighlight due today and overdue items.\nOutput both plain text and HTML."
+    }
+  ]
+}
