@@ -15,7 +15,7 @@ Note: the Excel file in `data/` should be populated from Microsoft Forms via a P
 - Front List → Ranked Submissions: `rank_submissions.py` → `scgai/AI Challenge/output/ranked_submissions.json`
 
 ## Run All (one command)
-- Default (local Excel already present):  
+Default (local Excel already present):  
 ```bash
 python "scgai/AI Challenge/run_all.py"
 ```
