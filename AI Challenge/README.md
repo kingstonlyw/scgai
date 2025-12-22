@@ -16,8 +16,7 @@ Note: the Excel file in `data/` should be populated from Microsoft Forms via a P
 
 ## Run All (one command)
 - Default (local Excel already present):  
-```
-bash
+```bash
 python "scgai/AI Challenge/run_all.py"
 ```
 
@@ -43,8 +42,7 @@ Ranking
 - `--start-month` – Start month for ranking (`YYYY-MM`)
 
 Example
-```
-bash
+```bash
 python run_all.py --[parameter-name] [parameter-input]
 ```
 
