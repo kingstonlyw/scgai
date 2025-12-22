@@ -1,7 +1,7 @@
 [
   {
     "name": "Daniel Kates",
-    "rephrased_submission": "Python script automates email handling for securitization, improving organization and efficiency for Capital Markets team.",
+    "rephrased_submission": "Python script automates securitization email handling in Outlook, improving accuracy and efficiency for Capital Markets team.",
     "submission_id": "4",
     "completion_time": "2025-08-24T22:16:03",
     "email": "dkates@starwood.com",
@@ -10,7 +10,7 @@
   },
   {
     "name": "Daniel Kates",
-    "rephrased_submission": "Python script automates securitization email handling in Outlook, improving organization and efficiency for Capital Markets team.",
+    "rephrased_submission": "Automation script for handling securitization emails in Outlook, improving organization and efficiency for Capital Markets team.",
     "submission_id": "13",
     "completion_time": "2025-09-26T15:34:25",
     "email": "dkates@starwood.com",
@@ -19,7 +19,7 @@
   },
   {
     "name": "Daniel Kates",
-    "rephrased_submission": "Implemented a ChatGPT workflow to standardize SFR deal annexes, improving efficiency and accuracy in data extraction and analysis.",
+    "rephrased_submission": "Implemented ChatGPT to standardize SFR deal annexes, automating data extraction and calculations, improving efficiency and accuracy.",
     "submission_id": "15",
     "completion_time": "2025-09-26T20:08:31",
     "email": "dkates@starwood.com",
@@ -28,7 +28,7 @@
   },
   {
     "name": "Michael Warrenger",
-    "rephrased_submission": "Custom GPT tool for generating standardized bullet points from debt RFPs to streamline communication with Capital Markets.",
+    "rephrased_submission": "Custom GPT for generating standardized bullet points from debt RFPs for the European Debt Origination Team.",
     "submission_id": "5",
     "completion_time": "2025-08-27T19:26:41",
     "email": "mwarrenger@starwood.com",
@@ -37,7 +37,7 @@
   },
   {
     "name": "Rhonda Chan",
-    "rephrased_submission": "Custom GPT for drafting standardized cover emails from deal memos, enhancing clarity and reducing preparation time.",
+    "rephrased_submission": "Custom GPT for drafting standardized cover emails from deal memos, improving clarity and reducing time spent on email preparation.",
     "submission_id": "16",
     "completion_time": "2025-09-29T21:25:36",
     "email": "Rchan@starwood.com",
@@ -55,7 +55,7 @@
   },
   {
     "name": "Brian Nordlinger",
-    "rephrased_submission": "Custom GPT for Anaplan documentation to assist in formula creation and troubleshooting.",
+    "rephrased_submission": "Custom GPT for Anaplan documentation to assist with formula troubleshooting and generation.",
     "submission_id": "1",
     "completion_time": "2025-08-12T15:33:38",
     "email": "bnordlinger@starwood.com",
@@ -64,7 +64,7 @@
   },
   {
     "name": "Cameron Pearson",
-    "rephrased_submission": "Automated Excel rollups using ChatGPT-generated VBA codes, saving time and improving productivity.",
+    "rephrased_submission": "Automated Excel rollups using ChatGPT-generated VBA codes, improving efficiency in data processing for multiple properties.",
     "submission_id": "9",
     "completion_time": "2025-09-25T10:12:54",
     "email": "cpearson@starwood.com",
@@ -73,7 +73,7 @@
   },
   {
     "name": "Christopher Rockensies",
-    "rephrased_submission": "Developed an Excel tool using queries and macros for efficient year-to-date ledger reporting, reducing monthly preparation time significantly.",
+    "rephrased_submission": "Developed an Excel tool using queries and macros for efficient year-to-date ledger reporting, reducing monthly reporting time significantly.",
     "submission_id": "14",
     "completion_time": "2025-09-26T16:15:29",
     "email": "crockensies@starwood.com",
@@ -82,7 +82,7 @@
   },
   {
     "name": "Kieran Hagan",
-    "rephrased_submission": "Developed DDQ GPT to streamline onboarding for Investor Relations/Due Diligence role, enhancing understanding of SREIT and market dynamics.",
+    "rephrased_submission": "Developed DDQ GPT to enhance onboarding for Investor Relations/Due Diligence Analyst role, improving understanding of SREIT and market dynamics.",
     "submission_id": "7",
     "completion_time": "2025-09-12T09:07:47",
     "email": "khagan@starwood.com",
@@ -91,7 +91,7 @@
   },
   {
     "name": "Natasha Barker",
-    "rephrased_submission": "Implement AI for EA assignments in intranet directory and a searchable database for fund splits.",
+    "rephrased_submission": "Implement AI for EA assignments in the intranet directory and a searchable database for fund splits.",
     "submission_id": "2",
     "completion_time": "2025-08-18T10:15:32",
     "email": "sbarker@starwood.com",
@@ -100,7 +100,7 @@
   },
   {
     "name": "Peter Hamernick",
-    "rephrased_submission": "Custom Yardi export report using AI for SQL script generation to enhance accounting processes.",
+    "rephrased_submission": "Custom Yardi export report using AI for SQL script generation to streamline accounting processes.",
     "submission_id": "10",
     "completion_time": "2025-09-25T14:29:41",
     "email": "phamernick@starwood.com",
@@ -118,7 +118,7 @@
   },
   {
     "name": "Sarah Connolly",
-    "rephrased_submission": "Talent Match Studio evaluates candidates based on job descriptions and feedback, generating scorecards and PDF summaries for hiring managers.",
+    "rephrased_submission": "Talent Match Studio automates candidate evaluation using customizable scorecards and feedback integration for recruiters.",
     "submission_id": "8",
     "completion_time": "2025-09-24T22:09:14",
     "email": "sconnolly@starwood.com",

@@ -2,11 +2,13 @@
 __pycache__/
 *.pyc
 .venv/
+*.keep
 
 # Env and secrets
 .env
 
-# Outputs
+# Inputs and Outputs
 output/*
+!output/.keep
 data/*
-
+!data/.keep
