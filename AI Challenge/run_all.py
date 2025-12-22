@@ -34,6 +34,7 @@ def main() -> None:
     ap.add_argument("--front-llm-clean", action="store_true", help="Include LLM-cleaned fields in front-facing output (with --front-plus)")
     ap.add_argument("--with-keywords", action="store_true", help="Extract AI keywords for front-facing word cloud")
     # Optional fetch step (Microsoft Graph)
+    # TEST BEFORE USE: Developers of this script were unable to test it due to restricted permissions
     ap.add_argument("--fetch-share-link", help="Fetch Excel from a Graph share link before processing")
     ap.add_argument("--fetch-user", help="Fetch from OneDrive user (userPrincipalName)")
     ap.add_argument("--fetch-path", help="Path under OneDrive/SharePoint drive root to file (with --fetch-user or site options)")
