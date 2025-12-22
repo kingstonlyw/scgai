@@ -43,7 +43,7 @@ Ranking
 
 Example
 ```bash
-python run_all.py --[parameter-name] [parameter-input]
+python "scgai/AI Challenge/run_all.py" --[parameter-name] [parameter-input]
 ```
 
 ## Secrets
