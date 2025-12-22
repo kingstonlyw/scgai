@@ -5,6 +5,8 @@ Purpose
 - Evaluate submissions via ChatGPT and aggregate meta statistics.
 - Optionally fetch the Excel directly from OneDrive/SharePoint using Microsoft Graph.
 
+Note: the Excel file in `data/` is typically populated from Microsoft Forms via a Power Automate flow.
+
 Data Flow
 - Excel → Submissions: `process_form_data_openpyxl.py` → `scgai/AI Challenge/output/submissions.json`
 - Submissions → Evaluations: `evaluate_submissions.py` → `scgai/AI Challenge/output/evaluations.json`
@@ -45,6 +47,10 @@ Outputs
 - `scgai/AI Challenge/output/evaluations.json`
 - `scgai/AI Challenge/output/meta.json`
 - `scgai/AI Challenge/output/front_facing.json`
+
+Ranking submissions
+- `run_all.py` now runs `rank_submissions.py` after building front-facing output and writes `output/ranked_submissions.json`.
+- Use `--start_month YYYY-MM` when calling `run_all.py` to set the first month included in the monthly ranking.
 
 PDF Export
 - Install: `python -m pip install --user -r requirements-pdf.txt`

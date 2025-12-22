@@ -1,257 +1,137 @@
 [
   {
-    "name": "Christopher Rockensies",
-    "title": "Excel Tool for Efficient YTD Expense Reporting",
-    "submission_id": "14",
-    "completion_time": "2025-09-26T16:15:29",
-    "email": "crockensies@starwood.com",
-    "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I built a year-to-date ledger summarization tool using ChatGPT, which streamlines our monthly reporting process for actual expenses. The tool combines Excel queries and macros to quickly refresh and summarize our financial data, allowing for easy updates and analysis. It aggregates YTD expenses by vendor and account group, significantly reducing the time spent on reporting.",
-      "challenge_addressed": "Previously, our team spent several days each month manually downloading and formatting reports from the ledger system, which was time-consuming and prone to errors. This cumbersome process limited our ability to update all expense categories efficiently. The manual nature of the task made it difficult to provide timely reports for budgeting and forecasting.",
-      "outcome": "Now, I can refresh all pivot tables and queries in under 10 minutes, summarizing every account group by vendor and segment. This new process saves us one to two days of work each month and consolidates all account groupings into a single file, enhancing our ability to analyze expenses and update forecasts.",
-      "cross_team_use": "Any team involved in financial reporting or forecasting can benefit from this tool, as it simplifies the process of pulling general ledger details into a reportable format. With some adjustments, other teams can adapt the queries and macros for their specific needs.",
-      "surprise": "I was surprised by how quickly queries can update and how straightforward they are to build with a basic understanding. I plan to implement this concept in other areas of my work and integrate it into my monthly forecasting.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%20of%20Query_Christopher%20Rockensi.png; https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%20of%20summary%20page_Christopher%20Rockensi.png; https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%20of%20Main%20Macro_Christopher%20Rockensi.png"
-    }
-  },
-  {
     "name": "Daniel Kates",
-    "title": "Outlook Email Automation for Securitization Management",
+    "rephrased_submission": "Python script automates email handling for securitization, improving organization and efficiency for Capital Markets team.",
     "submission_id": "4",
     "completion_time": "2025-08-24T22:16:03",
     "email": "dkates@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I developed a Python automation script that integrates with Microsoft Outlook to streamline the handling of securitization emails. The script identifies messages from specific senders, extracts the securitization name, organizes files in the Capital Markets database, and saves attachments while avoiding duplicates.",
-      "challenge_addressed": "The Capital Markets team receives numerous emails daily, risking the oversight of important materials and causing confusion due to duplicate saving attempts. Automating the process ensures nothing is missed, prevents duplication, and enforces a standard file organization approach.",
-      "outcome": "The automation saves 5–10 minutes per analyst daily, increases productivity, and ensures consistent file storage. Analysts can now focus on higher-value analysis without worrying about missing or misfiling materials.",
-      "cross_team_use": "The automation approach can be applied across various teams that handle repetitive tasks, such as filing emails or organizing documents. Similar logic can enhance workflows in different departments, allowing employees to concentrate on analysis and client relationships.",
-      "surprise": "I was surprised by how effectively AI could debug and enhance my ideas, making the coding process seamless. It generated useful outputs from rough drafts and pseudocode, improving the overall development experience.",
-      "optional": ""
-    }
+    "team_or_department": null
   },
   {
     "name": "Daniel Kates",
-    "title": "Automating SFR Deal Annexes with ChatGPT",
-    "submission_id": "15",
-    "completion_time": "2025-09-26T20:08:31",
-    "email": "dkates@starwood.com",
-    "submitter_type": "Team / Department",
-    "team_or_department": "Capital Markets",
-    "cleaned": {
-      "what_built": "We created a workflow using ChatGPT to standardize SFR deal annexes by automatically identifying and extracting key fields, regardless of their labeling or column order. This process replaces a manual, error-prone method with a clean, comparable dataset that is ready for decision-making in a fraction of the time.",
-      "challenge_addressed": "The workflow addresses the inconsistency and manual effort required to analyze SFR deal annexes, which often contain thousands of rows with varying column formats. ChatGPT automates the mapping and standardization of key data fields, significantly reducing time and errors in the analysis process.",
-      "outcome": "The implementation has led to an 80–90% reduction in manual effort per deal, allowing analysts to complete tasks in minutes instead of hours or days. The standardized outputs improve clarity and speed up decision-making, enabling the team to handle more deals without increasing headcount.",
-      "cross_team_use": "This scalable approach can be applied across other teams at Starwood facing similar challenges with inconsistent data formats. By adapting the framework, teams in multifamily, hospitality, and office sectors can also benefit from automated data extraction and standardization.",
-      "surprise": "We were surprised by the workflow's ability to effectively normalize inconsistent formats and deliver reliable outputs. The ease of extending the process for new calculations exceeded our expectations, confirming its flexibility and reliability for future datasets.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/_layouts/15/Doc.aspx?sourcedoc=%7B4E7DB565-C192-4765-B9D9-28AC72505751%7D&file=Combined%20SFR%20Tapes%20Analysis%20ChatGPT%20Check_Daniel%20Kates.xlsx&action=default&mobileredirect=true"
-    }
-  },
-  {
-    "name": "Michael Warrenger",
-    "title": "Bullet Point Generator for Debt RFPs",
-    "submission_id": "5",
-    "completion_time": "2025-08-27T19:26:41",
-    "email": "mwarrenger@starwood.com",
-    "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "A Custom GPT called 'Repo Bullets Generator' for the European Debt Origination Team. It generates concise bullet points summarizing debt RFPs for Capital Markets, trained on existing examples and refined for consistency. The workflow extracts key financing facts and rewrites them into a structured format.",
-      "challenge_addressed": "The Custom GPT addresses challenges of speed, consistency, and accuracy in preparing repo bullets. It reduces preparation time from 45-60 minutes to as little as 5 minutes while ensuring uniformity in format and detail. The tool also enhances accuracy by aligning outputs with received materials.",
-      "outcome": "The tool unlocks capacity for higher-value work and allows for scalability in handling multiple processes. It aids in training new team members and establishes a catalogue of comparable bullets for future reference, speeding up the creation of long-form materials.",
-      "cross_team_use": "Currently, the Custom GPT is primarily useful for Debt Origination and Capital Markets, but it could benefit other Starwood departments. The model's principles can be adapted for different use cases, potentially extending its application to other regions.",
-      "surprise": "I was surprised by the flexibility of the Custom GPT after the firmwide teach-in on August 7th. The 'Instruction' input and 'Create' functionality were particularly helpful in refining outputs. The training process took about two hours and has already saved significant time.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Example%20Output%20-%20Pecan_Michael%20Warrenger.PNG; https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Input%20Page_Michael%20Warrenger.PNG"
-    }
-  },
-  {
-    "name": "Rhonda Chan",
-    "title": "Custom GPT for Standardized Repo Deal Emails",
-    "submission_id": "16",
-    "completion_time": "2025-09-29T21:25:36",
-    "email": "Rchan@starwood.com",
-    "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I built a custom GPT called 'Repo Deal Email Assistant' that transforms internal deal memos into standardized cover emails for repo counterparties. It follows a structured format to ensure clarity and consistency in communication.",
-      "challenge_addressed": "This GPT reduces the manual effort and inconsistency in creating external deal summaries, streamlining the process and ensuring accurate communication.",
-      "outcome": "The implementation cut email drafting time from 20–30 minutes to under 5 minutes, enhancing clarity and consistency in communications with repo counterparties.",
-      "cross_team_use": "Yes, this approach can be adapted for any team sharing deal summaries with external parties, including investor relations and asset management.",
-      "surprise": "The GPT effectively adapted to institutional language and tone with minimal training, improving clarity while maintaining the intent of the memos.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Recording%202025-09-29%20Repo%20Deal%20Email%20Drafter_Rhonda%20Chan.mp4; https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%20-%20Repo%20Deal%20Email%20Drafter%20Sample_Rhonda%20Chan.jpg"
-    }
-  },
-  {
-    "name": "Alexandra Roberts",
-    "title": "Streamlining NDA Processing with ChatGPT Prompts",
-    "submission_id": "11",
-    "completion_time": "2025-09-26T15:00:05",
-    "email": "aroberts@starwood.com",
-    "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "ChatGPT prompt",
-      "challenge_addressed": "Streamlined the manual NDA processing.",
-      "outcome": "Increased efficiency in redlining NDAs, saving about an hour per NDA and boosting productivity.",
-      "cross_team_use": "This could benefit other departments with repetitive forms that have minor changes.",
-      "surprise": "ChatGPT's responsiveness to feedback and ability to adjust for formatting issues.",
-      "optional": ""
-    }
-  },
-  {
-    "name": "Brian Nordlinger",
-    "title": "Anaplan Formula Troubleshooting GPT Assistant",
-    "submission_id": "1",
-    "completion_time": "2025-08-12T15:33:38",
-    "email": "bnordlinger@starwood.com",
-    "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I created a custom GPT using GPT-5 with Anaplan documentation as its knowledge base. It assists in diagnosing formula issues and provides corrected formulas while tracing value calculations.",
-      "challenge_addressed": "The model quickly generates grids for similar formulas with different line item identifiers. It identifies dimension mismatches in Anaplan models and guides users on how to resolve them. Additionally, it aids AM and PM team members without Anaplan training in writing and modifying formulas.",
-      "outcome": "The model significantly saves time and aids in generating formula ideas. It also helps recall obscure Anaplan functions when specific tasks arise.",
-      "cross_team_use": "Yes, this model can assist AMs and PMs in using Anaplan models without backend knowledge, allowing them to make minor corrections without needing an Anaplan Analyst.",
-      "surprise": "https://chatgpt.com/g/g-6878f76c4d1c8191b11e4949cc5309ab-anaplan-assistant",
-      "optional": ""
-    }
-  },
-  {
-    "name": "Cameron Pearson",
-    "title": "Automated Excel Rollups with ChatGPT VBA Codes",
-    "submission_id": "9",
-    "completion_time": "2025-09-25T10:12:54",
-    "email": "cpearson@starwood.com",
-    "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "Developed VBA codes using ChatGPT to automate manual Excel processes.",
-      "challenge_addressed": "Automated the time-consuming task of creating rollups for over 200 properties in Excel, which previously involved extensive manual data handling.",
-      "outcome": "The automation has significantly improved productivity, saving several hours on each rollup project and allowing simultaneous work on other tasks.",
-      "cross_team_use": "The VBA codes can benefit anyone using Excel for property analysis, enabling automation of repetitive tasks through ChatGPT.",
-      "surprise": "I was pleasantly surprised by the effectiveness of the codes, which exceeded my expectations and became easier to refine as I improved my prompting skills.",
-      "optional": ""
-    }
-  },
-  {
-    "name": "Daniel Kates",
-    "title": "Outlook Email Automation for Securitization Management",
+    "rephrased_submission": "Python script automates securitization email handling in Outlook, improving organization and efficiency for Capital Markets team.",
     "submission_id": "13",
     "completion_time": "2025-09-26T15:34:25",
     "email": "dkates@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I developed a Python automation script that integrates with Microsoft Outlook to streamline the handling of securitization emails. It identifies messages from specific senders, extracts the securitization name, organizes files in the Capital Markets database, and saves attachments while avoiding duplicates. The script runs daily after market close, improving operational efficiency.",
-      "challenge_addressed": "The Capital Markets team receives numerous emails daily, risking the oversight of important materials. Duplicate saving attempts caused confusion, and manual handling disrupted productivity. Automating the process ensures nothing is missed, prevents duplication, and enforces standard file organization.",
-      "outcome": "The automation saves approximately 5–10 minutes per analyst daily, increasing productivity and focus on higher-value analysis. It standardizes file storage, ensuring a reliable archive and boosting confidence among analysts regarding securitization materials. This enhances operational quality and supports faster decision-making.",
-      "cross_team_use": "The automation approach can be adapted across various teams at Starwood that handle repetitive tasks with predictable patterns. By scaling these solutions, the company can reduce low-value work and allow employees to focus on strategic decision-making.",
-      "surprise": "I was surprised by how effectively ChatGPT transformed rough code into a functional script, making debugging efficient. The flexibility of the script to run on different mailboxes was also notable, as it is designed to operate on my VP’s account for centralized workflow.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Daniel_Kates_AI_Comp_8.24_Daniel%20Kates.mp4"
-    }
+    "team_or_department": null
+  },
+  {
+    "name": "Daniel Kates",
+    "rephrased_submission": "Implemented a ChatGPT workflow to standardize SFR deal annexes, improving efficiency and accuracy in data extraction and analysis.",
+    "submission_id": "15",
+    "completion_time": "2025-09-26T20:08:31",
+    "email": "dkates@starwood.com",
+    "submitter_type": "Team / Department",
+    "team_or_department": "Capital Markets"
+  },
+  {
+    "name": "Michael Warrenger",
+    "rephrased_submission": "Custom GPT tool for generating standardized bullet points from debt RFPs to streamline communication with Capital Markets.",
+    "submission_id": "5",
+    "completion_time": "2025-08-27T19:26:41",
+    "email": "mwarrenger@starwood.com",
+    "submitter_type": "Individual",
+    "team_or_department": null
+  },
+  {
+    "name": "Rhonda Chan",
+    "rephrased_submission": "Custom GPT for drafting standardized cover emails from deal memos, enhancing clarity and reducing preparation time.",
+    "submission_id": "16",
+    "completion_time": "2025-09-29T21:25:36",
+    "email": "Rchan@starwood.com",
+    "submitter_type": "Individual",
+    "team_or_department": null
+  },
+  {
+    "name": "Alexandra Roberts",
+    "rephrased_submission": "ChatGPT prompt to streamline NDA processing, improving efficiency and productivity.",
+    "submission_id": "11",
+    "completion_time": "2025-09-26T15:00:05",
+    "email": "aroberts@starwood.com",
+    "submitter_type": "Individual",
+    "team_or_department": null
+  },
+  {
+    "name": "Brian Nordlinger",
+    "rephrased_submission": "Custom GPT for Anaplan documentation to assist in formula creation and troubleshooting.",
+    "submission_id": "1",
+    "completion_time": "2025-08-12T15:33:38",
+    "email": "bnordlinger@starwood.com",
+    "submitter_type": "Individual",
+    "team_or_department": null
+  },
+  {
+    "name": "Cameron Pearson",
+    "rephrased_submission": "Automated Excel rollups using ChatGPT-generated VBA codes, saving time and improving productivity.",
+    "submission_id": "9",
+    "completion_time": "2025-09-25T10:12:54",
+    "email": "cpearson@starwood.com",
+    "submitter_type": "Individual",
+    "team_or_department": null
+  },
+  {
+    "name": "Christopher Rockensies",
+    "rephrased_submission": "Developed an Excel tool using queries and macros for efficient year-to-date ledger reporting, reducing monthly preparation time significantly.",
+    "submission_id": "14",
+    "completion_time": "2025-09-26T16:15:29",
+    "email": "crockensies@starwood.com",
+    "submitter_type": "Individual",
+    "team_or_department": null
   },
   {
     "name": "Kieran Hagan",
-    "title": "DDQ GPT Development for SREIT Investor Relations Onboarding",
+    "rephrased_submission": "Developed DDQ GPT to streamline onboarding for Investor Relations/Due Diligence role, enhancing understanding of SREIT and market dynamics.",
     "submission_id": "7",
     "completion_time": "2025-09-12T09:07:47",
     "email": "khagan@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I developed a custom GPT called DDQ GPT and implemented a prompt to significantly reduce the onboarding learning curve for my role, enhancing my effectiveness for my supervisor.",
-      "challenge_addressed": "This GPT and prompt helped me quickly gain proficiency and confidence in delivering information about SREIT, allowing me to understand the vehicle and the competitive landscape in a short time since my hiring.",
-      "outcome": "Using these workflows resulted in a deeper understanding of SREIT and its competitors, saving time and energy for both myself and my supervisor, enabling me to focus on impactful projects.",
-      "cross_team_use": "This workflow could benefit other client-facing roles such as Internal/External Wholesaling, Sales, Investor Relations, Marketing, and Operations.",
-      "surprise": "I was impressed by DDQ GPT's ability to dynamically interpret and respond to complex questions about the prospectus, rather than just providing copied text.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%202025-09-12%20090007_Kieran%20Hagan.png; https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%202025-09-12%20090040_Kieran%20Hagan.png; https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Screenshot%202025-09-12%20090443_Kieran%20Hagan.png"
-    }
+    "team_or_department": null
   },
   {
     "name": "Natasha Barker",
-    "title": "AI Integration for EA Assignments and Fund Database",
+    "rephrased_submission": "Implement AI for EA assignments in intranet directory and a searchable database for fund splits.",
     "submission_id": "2",
     "completion_time": "2025-08-18T10:15:32",
     "email": "sbarker@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "Implemented two AI solutions: 1) Added EA assignments to the intranet directory. 2) Created a searchable space on the intranet for deals and fund splits to aid in expense allocations.",
-      "challenge_addressed": "Assistants struggle to identify EA contacts, often asking multiple people for information. Additionally, not all deals are in the Concur system, requiring manual fund split allocations and causing inefficiencies.",
-      "outcome": "These tools will save EA time, improve clarity on support, and expedite accurate expense reimbursements. EAs will have more time for larger projects instead of waiting for information.",
-      "cross_team_use": "All teams will benefit from these AI tools. The Concur team will receive accurate expense reports, and anyone can easily find the relevant EA when needed.",
-      "surprise": "",
-      "optional": ""
-    }
+    "team_or_department": null
   },
   {
     "name": "Peter Hamernick",
-    "title": "AI-Driven Yardi Export Report Automation",
+    "rephrased_submission": "Custom Yardi export report using AI for SQL script generation to enhance accounting processes.",
     "submission_id": "10",
     "completion_time": "2025-09-25T14:29:41",
     "email": "phamernick@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "A custom Yardi export report was developed to send data to Blackline, streamlining the accounting control and month-end closing process.",
-      "challenge_addressed": "The new report was created quickly by modifying an existing SQL script, eliminating the need for extensive communication with an external developer.",
-      "outcome": "The use of SQL syntax generation and natural language prompts enabled rapid report creation, offering significant time and cost savings by reducing reliance on external vendors.",
-      "cross_team_use": "This case demonstrates how any team can enhance applications by clearly defining inputs and outputs, allowing for effective report generation.",
-      "surprise": "I was impressed by how well complex SQL scripts were processed and understood in detail.",
-      "optional": ""
-    }
+    "team_or_department": null
   },
   {
     "name": "William Kanders",
-    "title": "Automated Email Tracker for Team Project Management",
+    "rephrased_submission": "Automated email project tracker using Power Automate and Chat GPT for team project updates.",
     "submission_id": "3",
     "completion_time": "2025-08-22T13:45:35",
     "email": "wkanders@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I created a Microsoft Power Automate Template that sends a daily email at 6:30 AM to my team, featuring a table of ongoing projects. The table includes project names, statuses, due dates with color-coded alerts, and additional notes. Team members can update the project tracker via a shared Excel file on SharePoint.",
-      "challenge_addressed": "Our team, spread across different countries and time zones, needed a way to manage multiple projects with varying due dates. This tracker ensures timely deliverables and keeps senior members informed about project statuses, reducing communication bottlenecks and shortening weekly meetings.",
-      "outcome": "The tracker has become an essential daily tool for our team, helping us stay accountable for due dates and saving 1 to 2 hours per week in meeting planning and execution. It serves as an agenda for our catch-ups, making our workflow more dynamic and productive.",
-      "cross_team_use": "This tool could benefit every team in the organization, whether for publishing QIUs or asset acquisition. The automated daily updates keep everyone informed about outstanding tasks and project statuses.",
-      "surprise": "I was surprised by how effectively Chat GPT assisted me in coding the necessary HTML, making the process intuitive despite my lack of a Computer Science background. It also provided valuable suggestions to enhance my initial idea.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Morning%20Project%20Tracker%20Screen%20Shot_William%20Kanders.JPG"
-    }
+    "team_or_department": null
   },
   {
     "name": "Sarah Connolly",
-    "title": "Automated Candidate Evaluation with Custom Scorecards",
+    "rephrased_submission": "Talent Match Studio evaluates candidates based on job descriptions and feedback, generating scorecards and PDF summaries for hiring managers.",
     "submission_id": "8",
     "completion_time": "2025-09-24T22:09:14",
     "email": "sconnolly@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "I built a Talent Match Studio that allows recruiters to input job descriptions and customize the importance of each requirement by percentage. It generates a scorecard to evaluate candidates based on fit and enables recruiters to download PDF summaries for hiring managers. The workflow also incorporates employee feedback to update candidate rankings.",
-      "challenge_addressed": "This solution reduces manual effort in candidate evaluation, maintains an ordered list of candidates, and provides hiring managers with instant access to up-to-date information.",
-      "outcome": "Using the ChatGPT 'chat' section has significantly streamlined the recruiting process, saving time and allowing for more frequent updates to hiring managers. The workflow is expected to improve further as feedback is integrated, ultimately creating a library of models for various roles.",
-      "cross_team_use": "While primarily for HR, the reports generated can benefit all teams by aiding in the recruitment of top talent. The baseline model can be customized for new roles, creating a library of models for quick access.",
-      "surprise": "I was surprised by how well the model adapted to my modifications. The updates were accurately applied as I shared candidates, indicating effective model building.",
-      "optional": "https://starwoodcapital-my.sharepoint.com/personal/djackson_starwood_com/Documents/Apps/Microsoft%20Forms/Monthly%20Starwood%20AI%20Challenge%20Submission%20(Copy)/Optional%C2%A0Upload%20a%20screenshot%20or%20paste%20a%20link%20to%20a/Starwood%20Ops%20Scorecard%20(1)_Sarah%20Connolly.pdf"
-    }
+    "team_or_department": null
   },
   {
     "name": "Marvin Saint-Fleur",
-    "title": "Time-Saving App for Associate Workflow Optimization",
+    "rephrased_submission": "A super cool app that saves associates time for other functions.",
     "submission_id": "6",
     "completion_time": "2025-09-10T10:04:49",
     "email": "msaintfleur@starwood.com",
     "submitter_type": "Individual",
-    "team_or_department": null,
-    "cleaned": {
-      "what_built": "A super cool app.",
-      "challenge_addressed": "It allows associates to save time for other functions.",
-      "outcome": "Time saved.",
-      "cross_team_use": "It is usable by everyone.",
-      "surprise": "",
-      "optional": ""
-    }
+    "team_or_department": null
   }
 ]

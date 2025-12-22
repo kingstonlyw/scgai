@@ -39,6 +39,7 @@ def main() -> None:
     ap.add_argument("--fetch-path", help="Path under OneDrive/SharePoint drive root to file (with --fetch-user or site options)")
     ap.add_argument("--fetch-site-host", help="SharePoint host (e.g., contoso.sharepoint.com)")
     ap.add_argument("--fetch-site-path", help="SharePoint site path (e.g., /sites/Team)")
+    ap.add_argument("--start-month", help="Start month YYYY-MM to pass to the ranker (e.g. 2025-08)")
     args = ap.parse_args()
 
     excel = Path(args.excel)
@@ -78,6 +79,11 @@ def main() -> None:
         base / "extract_keywords.py",
         base.parent / "extract_keywords.py",
     ])
+    # Ranker script (creates output/ranked_submissions.json)
+    ranker = find_first([
+        base / "rank_submissions.py",
+        base.parent / "rank_submissions.py",
+    ])
 
     if not converter:
         print("Cannot find process_form_data_openpyxl.py", file=sys.stderr)
@@ -96,7 +102,7 @@ def main() -> None:
     if fetcher and (
         args.fetch_share_link or (args.fetch_user and args.fetch_path) or (args.fetch_site_host and args.fetch_site_path and args.fetch_path)
     ):
-        print("[0/4] Fetching Excel via Microsoft Graph …")
+        print("[0/5] Fetching Excel via Microsoft Graph …")
         fetch_cmd = [
             sys.executable,
             fetcher,
@@ -148,29 +154,29 @@ def main() -> None:
     ]
     if rename:
         cmd.extend(["--rename", rename])
-    print("[1/4] Building submissions.json …")
+    print("[1/5] Building submissions.json …")
     subprocess.run(cmd, check=True)
 
     # Step 2: submissions -> evaluations.json (LLM)
     evaluations_path = out_dir / "evaluations.json"
     if args.skip_llm:
-        print("[2/4] Skipping LLM evaluation (per flag)")
+        print("[2/5] Skipping LLM evaluation (per flag)")
     else:
         if not os.getenv("OPENAI_API_KEY"):
-            print("[2/4] ERROR: OPENAI_API_KEY not set. Create scgai/AI Challenge/.env with: \nOPENAI_API_KEY=sk-your-key", file=sys.stderr)
+            print("[2/5] ERROR: OPENAI_API_KEY not set. Create scgai/AI Challenge/.env with: \nOPENAI_API_KEY=sk-your-key", file=sys.stderr)
             sys.exit(3)
         if not evaluator:
-            print("[2/4] ERROR: evaluator script not found", file=sys.stderr)
+            print("[2/5] ERROR: evaluator script not found", file=sys.stderr)
             sys.exit(3)
-        print("[2/4] Running evaluations …")
+        print("[2/5] Running evaluations …")
         # Run in the base dir so relative paths (output/…) match
         subprocess.run([sys.executable, evaluator], check=True, cwd=str(base))
         if not evaluations_path.exists():
-            print("[2/4] ERROR: evaluations.json not produced", file=sys.stderr)
+            print("[2/5] ERROR: evaluations.json not produced", file=sys.stderr)
             sys.exit(4)
 
     # Step 3: evaluations + submissions -> meta.json
-    print("[3/4] Aggregating meta statistics …")
+    print("[3/5] Aggregating meta statistics …")
     subprocess.run([
         sys.executable,
         aggregator,
@@ -183,7 +189,7 @@ def main() -> None:
     ], check=True)
 
     # Step 4: Build front-facing list
-    print("[4/4] Building front-facing list …")
+    print("[4/5] Building front-facing list …")
     front_out = str(out_dir / "front_facing.json")
     if args.front_plus and front_builder_plus:
         cmd_front = [
@@ -209,6 +215,24 @@ def main() -> None:
             "--submissions",
             str(submissions_path),
         ], check=True)
+
+    # Step: generate ranked_submissions.json from front_facing.json
+    ranked_out = out_dir / "ranked_submissions.json"
+    if ranker:
+        print("[5/5] Generating ranked_submissions.json …")
+        rank_cmd = [
+            sys.executable,
+            ranker,
+            "--input",
+            front_out,
+            "--output",
+            str(ranked_out),
+        ]
+        if args.start_month:
+            rank_cmd += ["--start-month", args.start_month]
+        subprocess.run(rank_cmd, check=True, cwd=str(base))
+    else:
+        print("[extra] rank_submissions.py not found; skipping ranked_submissions generation", file=sys.stderr)
 
     # Optional: AI keyword extraction
     if args.with_keywords:
