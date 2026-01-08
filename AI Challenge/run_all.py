@@ -29,9 +29,15 @@ def main() -> None:
     ap.add_argument("--skip-llm", action="store_true", help="Skip the LLM evaluation step")
     ap.add_argument("--export-pdf", action="store_true", help="Export evaluations to a PDF report at the end")
     # Front-facing options
-    ap.add_argument("--front-plus", action="store_true", help="Use enhanced front-facing builder with LLM options")
-    ap.add_argument("--front-llm-title", action="store_true", help="Generate LLM titles in front-facing output (with --front-plus)")
-    ap.add_argument("--front-llm-clean", action="store_true", help="Include LLM-cleaned fields in front-facing output (with --front-plus)")
+    # Defaults: use enhanced front-facing builder and enable LLM title/cleaning.
+    # Provide --no-* flags to opt out when desired.
+    ap.add_argument("--no-front-plus", dest="front_plus", action="store_false",
+                    help="Do NOT use enhanced front-facing builder (default: use it)")
+    ap.add_argument("--no-front-llm-title", dest="front_llm_title", action="store_false",
+                    help="Do NOT generate LLM titles in front-facing output (default: generate)")
+    ap.add_argument("--no-front-llm-clean", dest="front_llm_clean", action="store_false",
+                    help="Do NOT include LLM-cleaned fields in front-facing output (default: include)")
+    ap.set_defaults(front_plus=True, front_llm_title=True, front_llm_clean=True)
     ap.add_argument("--with-keywords", action="store_true", help="Extract AI keywords for front-facing word cloud")
     # Optional fetch step (Microsoft Graph)
     # TEST BEFORE USE: Developers of this script were unable to test it due to restricted permissions
