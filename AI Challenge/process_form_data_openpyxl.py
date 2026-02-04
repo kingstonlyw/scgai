@@ -196,7 +196,7 @@ def main():
     if not excel_path.exists():
         raise SystemExit(f"Excel file not found: {excel_path}")
 
-    wb = load_workbook(filename=str(excel_path), data_only=True, read_only=True)
+    wb = load_workbook(filename=str(excel_path), data_only=True)
 
     # Resolve sheet
     if isinstance(args.sheet, str):
