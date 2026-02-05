@@ -20,30 +20,60 @@ Default (local Excel already present):
 python "scgai/AI Challenge/run_all.py"
 ```
 
-## `run_all.py` options
-If default is not specified, it defaults to `False` or `None`.
+## `run_all.py` Parameters
 
-Inputs
-- `--excel` – Path to the Excel form file (default: `data/form_data.xlsx`)
-- `--sheet` – Sheet name or index (default: `Sheet1`)
-- `--header-row` – Header row number (default: `1`)
+### Inputs
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--excel` | Path to the Excel form file | `data/form_data.xlsx` |
+| `--sheet` | Sheet name or index | `Sheet1` |
+| `--header-row` | Header row number (1-based) | `1` |
 
-Pipeline
-- `--skip-llm` – Skip LLM evaluation
-- `--export-pdf` – Export evaluations to PDF
+### Pipeline
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--skip-llm` | Skip the LLM evaluation step (no API key needed) | off |
+| `--export-pdf` | Export evaluations to a PDF report | off |
 
-Front-facing output
-- `--front-plus` – Use enhanced front-facing builder
-- `--front-llm-title` – Generate AI titles (requires `--front-plus`)
-- `--front-llm-clean` – Include AI-cleaned text (requires `--front-plus`)
-- `--with-keywords` – Extract AI keywords
+### Front-Facing Output
+The enhanced front-facing builder and LLM title/cleaning are **enabled by default**. Use the `--no-*` flags to disable them.
 
-Ranking
-- `--start-month` – Start month for ranking (`YYYY-MM`)
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--no-front-plus` | Do NOT use the enhanced front-facing builder | enabled |
+| `--no-front-llm-title` | Do NOT generate LLM titles in front-facing output | enabled |
+| `--no-front-llm-clean` | Do NOT include LLM-cleaned fields in front-facing output | enabled |
+| `--with-keywords` | Extract AI keywords for word cloud | off |
 
-Example
+### Ranking
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--start-month` | Start month for ranking (`YYYY-MM`, e.g. `2025-08`) | none |
+
+### Microsoft Graph (Optional)
+Fetch the Excel file from SharePoint/OneDrive before processing.
+
+| Parameter | Description |
+|-----------|-------------|
+| `--fetch-share-link` | Fetch Excel from a Graph share link |
+| `--fetch-user` | OneDrive user (userPrincipalName) |
+| `--fetch-path` | Path under OneDrive/SharePoint drive root |
+| `--fetch-site-host` | SharePoint host (e.g. `contoso.sharepoint.com`) |
+| `--fetch-site-path` | SharePoint site path (e.g. `/sites/Team`) |
+
+### Examples
 ```bash
-python "scgai/AI Challenge/run_all.py" --[parameter-name] [parameter-input]
+# Default run (local Excel, all features enabled)
+python "scgai/AI Challenge/run_all.py"
+
+# Custom Excel, skip LLM evaluation
+python "scgai/AI Challenge/run_all.py" --excel "path/to/forms.xlsx" --skip-llm
+
+# Full run with PDF export and keywords
+python "scgai/AI Challenge/run_all.py" --export-pdf --with-keywords
+
+# Disable LLM titles, set ranking start month
+python "scgai/AI Challenge/run_all.py" --no-front-llm-title --start-month 2025-08
 ```
 
 ## Secrets
